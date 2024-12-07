@@ -1,0 +1,149 @@
+[gd_scene load_steps=4 format=3 uid="uid://tcdiv6ps85p3"]
+
+[ext_resource type="Script" path="res://addons/virtual_joystick/virtual_control.gd" id="1_3uo5p"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_ynrux"]
+[ext_resource type="Texture2D" uid="uid://smhecqfagimg" path="res://addons/virtual_joystick/textures/button.png" id="3_qndq7"]
+
+[node name="VirtualControl" type="CanvasLayer"]
+script = ExtResource("1_3uo5p")
+
+[node name="HBoxContainerThumbsticks" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="LeftControl" type="Control" parent="HBoxContainerThumbsticks"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LeftThumbstick" parent="HBoxContainerThumbsticks/LeftControl" instance=ExtResource("1_ynrux")]
+layout_mode = 1
+anchors_preset = 15
+anchor_top = 0.0
+anchor_right = 1.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+joystick_mode = 2
+visibility_mode = 2
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_forward"
+action_down = "move_back"
+
+[node name="RightControl" type="Control" parent="HBoxContainerThumbsticks"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightThumbstick" parent="HBoxContainerThumbsticks/RightControl" instance=ExtResource("1_ynrux")]
+layout_mode = 1
+anchors_preset = 15
+anchor_top = 0.0
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 0.0
+offset_right = 4.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+joystick_mode = 2
+visibility_mode = 2
+action_left = "camera_left"
+action_right = "camera_right"
+action_up = "camera_up"
+action_down = "camera_down"
+
+[node name="HBoxContainerButtons" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="HBoxContainerButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainerButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopControl" type="Control" parent="HBoxContainerButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MidControl" type="Control" parent="HBoxContainerButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ControlY" type="Control" parent="HBoxContainerButtons/VBoxContainer/MidControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonY" type="TouchScreenButton" parent="HBoxContainerButtons/VBoxContainer/MidControl/ControlY"]
+texture_normal = ExtResource("3_qndq7")
+action = "shoot"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainerButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ControlX" type="Control" parent="HBoxContainerButtons/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainerButtons/VBoxContainer/HBoxContainer/ControlX"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="ButtonX" type="TouchScreenButton" parent="HBoxContainerButtons/VBoxContainer/HBoxContainer/ControlX/Control"]
+texture_normal = ExtResource("3_qndq7")
+action = "jump"
+
+[node name="Control" type="Control" parent="HBoxContainerButtons/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ControlB" type="Control" parent="HBoxContainerButtons/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonB" type="TouchScreenButton" parent="HBoxContainerButtons/VBoxContainer/HBoxContainer/Control/ControlB"]
+texture_normal = ExtResource("3_qndq7")
+action = "shoot"
+
+[node name="ControlA" type="Control" parent="HBoxContainerButtons/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainerButtons/VBoxContainer/HBoxContainer/ControlA"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="ButtonA" type="TouchScreenButton" parent="HBoxContainerButtons/VBoxContainer/HBoxContainer/ControlA/Control"]
+texture_normal = ExtResource("3_qndq7")
+action = "jump"
